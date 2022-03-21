@@ -59,6 +59,13 @@ textarea:focus{
 .delete-icon{
     cursor: pointer;
 }
+.edit-section {
+    display: flex;
+    justify-content: space-between;
+}
+.edit-icon{
+    cursor: pointer;
+}
 .search{
     display: flex;
     align-items: center;
@@ -86,4 +93,7 @@ textarea:focus{
 }
 .dark-mode h1{
     color: white;
+}
+.existing-note{
+    background-color: #fef68a;
 }

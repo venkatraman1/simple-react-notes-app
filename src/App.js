@@ -41,11 +41,20 @@ function App() {
     setNotes(remainingNotes);
   }
 
+  const handleEditNote = (id, text) => {
+    const date = new Date();
+    const noteIndex = notes.findIndex((note => note.id ==id ));
+    let updatedNotes = [...notes];
+    updatedNotes[noteIndex].text = text;
+    updatedNotes[noteIndex].date = date.toLocaleDateString();
+    setNotes(updatedNotes);
+  }
+
   const [searchText, SetSearchText] = useState('');
 
  useEffect(()=>{
    const savedNotes = JSON.parse(localStorage.getItem('react-notes-app-data'));
-
+  console.log(savedNotes);
    if(savedNotes){
      setNotes(savedNotes);
    }
@@ -53,7 +62,7 @@ function App() {
 
   useEffect(()=>{
     localStorage.setItem('react-notes-app-data', JSON.stringify(notes))
-  },[notes])
+  },[notes, handleEditNote])
 
   return (
     <div className={`${darkMode && 'dark-mode'}`}>
@@ -64,6 +73,7 @@ function App() {
         notes={notes.filter((note)=>note.text.includes(searchText))}
         handleAddNote={addNote}
         handleDeleteNote = {handleDeleteNote}
+        handleEditNote = {handleEditNote}
       />
       </div>
     </div>
