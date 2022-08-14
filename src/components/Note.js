@@ -27,7 +27,7 @@ const Note = ({ id, text, date, handleDeleteNote, handleEditNote }) => {
     setEditMode(false);
   };
   return (
-    <div className="note">
+    <div className="note" key={id}>
       <div className="edit-section">
         <textarea
           disabled={!editMode && ("true")}
